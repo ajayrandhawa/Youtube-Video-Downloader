@@ -12,7 +12,7 @@ Blackcat Youtube Downloader is Open Source GUI tool to download Youtube video. I
 
 | Wireframe | Screenshot |
 | --------------------- | -------------------- |
-| <img src="mock.png"> | <img src="logo.png"> |
+| <img src="mock.png"> | <img src="view.gif"> |
 
 ### Code
 
