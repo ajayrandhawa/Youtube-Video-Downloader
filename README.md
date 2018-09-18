@@ -189,5 +189,6 @@ if __name__ == '__main__':
 
 ```
 
-### Under Development :)
+### Version 1.1 :)
+
 #### Happy Open Source......
