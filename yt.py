@@ -54,18 +54,18 @@ class YtDownloadThread(QThread):
 
         if(qual == "Best Available"):
             stream = yt.streams.filter(progressive = True, file_extension = "mp4").first()
-            stream.download()
+            stream.download(self.yt_savepath)
         elif(qual == "720p"):
             itag = 22
             stream = yt.streams.get_by_itag(itag)
-            stream.download()
+            stream.download(self.yt_savepath)
         elif (qual == "360p"):
             itag = 18
             stream = yt.streams.get_by_itag(itag)
-            stream.download()
+            stream.download(self.yt_savepath)
         elif (qual == "Audio Only"):
             stream = yt.streams.filter(only_audio=True).first()
-            stream.download()
+            print(self.yt_savepath)
 
     def progress_bar(self, stream, chunk, file_handle, bytes_remaining):
         p = round(file_handle.tell() / (file_handle.tell() + bytes_remaining) * 100, 1)
