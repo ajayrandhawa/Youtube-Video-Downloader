@@ -17,6 +17,11 @@ Blackcat Youtube Downloader is Open Source GUI tool to download Youtube video. I
 ### Code
 
 ```
+# Blackcat Pytube PyQt YouTube Downloader
+# Author : Ajaypal Singh Randhawa
+# Version : 1.1
+# Email : ajayrandhawartg@gmail.com
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5 import QtSql, uic, QtCore
@@ -73,18 +78,18 @@ class YtDownloadThread(QThread):
 
         if(qual == "Best Available"):
             stream = yt.streams.filter(progressive = True, file_extension = "mp4").first()
-            stream.download()
+            stream.download(self.yt_savepath)
         elif(qual == "720p"):
             itag = 22
-            stream = yt.streams.filter(progressive=True, file_extension="mp4").first()
-            stream.download()
+            stream = yt.streams.get_by_itag(itag)
+            stream.download(self.yt_savepath)
         elif (qual == "360p"):
             itag = 18
-            stream = yt.streams.filter(progressive=True, file_extension="mp4").first()
-            stream.download()
+            stream = yt.streams.get_by_itag(itag)
+            stream.download(self.yt_savepath)
         elif (qual == "Audio Only"):
             stream = yt.streams.filter(only_audio=True).first()
-            stream.download()
+            print(self.yt_savepath)
 
     def progress_bar(self, stream, chunk, file_handle, bytes_remaining):
         p = round(file_handle.tell() / (file_handle.tell() + bytes_remaining) * 100, 1)
