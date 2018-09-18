@@ -1,4 +1,4 @@
-# Blackcat Youtube Downloader
+# Blackcat PyQt Youtube Downloader
 
 Blackcat Youtube Downloader is Open Source GUI tool to download Youtube video. It is Developed with Python, Qt, and Pytube Library. It is Multi-thread Application. Best Available Option download video in highly available Quality . Download Videos in 720p, 480p,  360p etc. 
 
@@ -126,8 +126,7 @@ class MyWindow(QMainWindow):
 
     @pyqtSlot()
     def on_linkedbtn_clicked(self):
-        self.console.append("<p style='color:green'>Downloading Complete :)</p>")
-        #webbrowser.open('https://www.linkedin.com/in/ajaypalsinghrandhawa')
+        webbrowser.open('https://www.linkedin.com/in/ajaypalsinghrandhawa')
 
     @pyqtSlot()
     def on_fetchbtn_clicked(self):
@@ -173,12 +172,9 @@ class MyWindow(QMainWindow):
             self.temp = self.temp + 1
             self.downloadcomplete()
 
-
-
     def downloadcomplete(self):
         self.console.append("<span style='color:green'>Downloading Complete :)</span>")
         self.dwnld.setEnabled(False)
-        pass
 
 
 if __name__ == '__main__':
