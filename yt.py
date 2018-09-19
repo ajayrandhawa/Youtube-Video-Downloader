@@ -1,3 +1,8 @@
+# Blackcat Pytube PyQt YouTube Downloader
+# Author : Ajaypal Singh Randhawa
+# Version : 1.1
+# Email : ajayrandhawartg@gmail.com
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5 import QtSql, uic, QtCore
@@ -52,24 +57,25 @@ class YtDownloadThread(QThread):
         yt = YouTube(url)
         yt.register_on_progress_callback(self.progress_bar)
 
-        if(qual == "Best Available"):
-            stream = yt.streams.filter(progressive = True, file_extension = "mp4").first()
-            stream.download(self.yt_savepath)
-        elif(qual == "720p"):
-            itag = 22
-            stream = yt.streams.get_by_itag(itag)
-            stream.download(self.yt_savepath)
-        elif (qual == "360p"):
-            itag = 18
-            stream = yt.streams.get_by_itag(itag)
-            stream.download(self.yt_savepath)
-        elif (qual == "Audio Only"):
-            stream = yt.streams.filter(only_audio=True).first()
-            print(self.yt_savepath)
-
+        try:
+            if(qual == "Best Available"):
+                stream = yt.streams.filter(progressive = True, file_extension = "mp4").first()
+                stream.download(self.yt_savepath)
+            elif(qual == "720p"):
+                itag = 22
+                stream = yt.streams.get_by_itag(itag)
+                stream.download(self.yt_savepath)
+            elif (qual == "360p"):
+                itag = 18
+                stream = yt.streams.get_by_itag(itag)
+                stream.download(self.yt_savepath)
+            elif (qual == "Audio Only"):
+                stream = yt.streams.filter(only_audio=True).first()
+                print(self.yt_savepath)
+        except:
+            print("Error")
     def progress_bar(self, stream, chunk, file_handle, bytes_remaining):
         p = round(file_handle.tell() / (file_handle.tell() + bytes_remaining) * 100, 1)
-        print(p, "%")
         self.ytdwldsgl.emit(p)
 
 
@@ -130,6 +136,7 @@ class MyWindow(QMainWindow):
     @QtCore.pyqtSlot()
     def on_dwnld_clicked(self):
         self.console.append("Starting download....")
+        self.console.append("<span style='color:orange'>If downloading not start in few 10 seconds try <b>Best Available</b> in Quality</span>")
         self.ytdwlthread.yt_url = self.urlinput.text()
         self.ytdwlthread.yt_savepath = self.savepath
         self.ytdwlthread.yt_quality = self.qualitycheck.itemText(self.qualitycheck.currentIndex())
