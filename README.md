@@ -11,7 +11,7 @@ Youtube Video Downloader is Open Source GUI tool to download Youtube video. It i
 3. Fetch Title & Thumbnail.
 4. High Quality Video Download.
 
-<img src="view.gif">
+<img src="view2.gif">
 
 ### Version 1.1 :)
 
