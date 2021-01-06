@@ -1,4 +1,4 @@
-# Youtube Video Downloader
+# Youtube Video Downloader ![𝚅𝚒𝚜𝚒𝚝𝚘𝚛𝚜](https://visitor-badge.laobi.icu/badge?page_id=ajayrandhawa.Youtube-Video-Downloader&title=Visitor )
 
 Youtube Video Downloader is Open Source GUI tool to download Youtube video. It is Developed with Python, Qt, and Pytube Library. It is Multi-thread Application. Best Available Option download video in highly available Quality . Download Videos in 720p, 480p,  360p etc. 
 
